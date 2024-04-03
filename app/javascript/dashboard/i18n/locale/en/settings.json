@@ -83,7 +83,10 @@
         "CONVERSATION_CREATION": "Send email notifications when a new conversation is created",
         "CONVERSATION_MENTION": "Send email notifications when you are mentioned in a conversation",
         "ASSIGNED_CONVERSATION_NEW_MESSAGE": "Send email notifications when a new message is created in an assigned conversation",
-        "PARTICIPATING_CONVERSATION_NEW_MESSAGE": "Send email notifications when a new message is created in a participating conversation"
+        "PARTICIPATING_CONVERSATION_NEW_MESSAGE": "Send email notifications when a new message is created in a participating conversation",
+        "SLA_MISSED_FIRST_RESPONSE": "Send email notifications when a conversation misses first response SLA",
+        "SLA_MISSED_NEXT_RESPONSE": "Send email notifications when a conversation misses next response SLA",
+        "SLA_MISSED_RESOLUTION": "Send email notifications when a conversation misses resolution SLA"
       },
       "API": {
         "UPDATE_SUCCESS": "Your notification preferences are updated successfully",
@@ -98,7 +101,10 @@
         "ASSIGNED_CONVERSATION_NEW_MESSAGE": "Send push notifications when a new message is created in an assigned conversation",
         "PARTICIPATING_CONVERSATION_NEW_MESSAGE": "Send push notifications when a new message is created in a participating conversation",
         "HAS_ENABLED_PUSH": "You have enabled push for this browser.",
-        "REQUEST_PUSH": "Enable push notifications"
+        "REQUEST_PUSH": "Enable push notifications",
+        "SLA_MISSED_FIRST_RESPONSE": "Send push notifications when a conversation misses first response SLA",
+        "SLA_MISSED_NEXT_RESPONSE": "Send push notifications when a conversation misses next response SLA",
+        "SLA_MISSED_RESOLUTION": "Send push notifications when a conversation misses resolution SLA"
       },
       "PROFILE_IMAGE": {
         "LABEL": "Profile Image"
@@ -112,6 +118,21 @@
         "LABEL": "Display name",
         "ERROR": "Please enter a valid display name",
         "PLACEHOLDER": "Please enter a display name, this would be displayed in conversations"
+      },
+      "AZAR_DISPLAY_NAME": {
+        "LABEL": "Display name on AzarOnline.com",
+        "ERROR": "Please enter a valid display name for AzarOnline.com",
+        "PLACEHOLDER": "Please enter a display name, this would be displayed in AzarOnline.com conversations"
+      },
+      "MONO_DISPLAY_NAME": {
+        "LABEL": "Display name on MonoVM.com",
+        "ERROR": "Please enter a valid display name for MonoVM.com",
+        "PLACEHOLDER": "Please enter a display name, this would be displayed in MonoVM.com conversations"
+      },
+      "GBITS_DISPLAY_NAME": {
+        "LABEL": "Display name on 1Gbits.com",
+        "ERROR": "Please enter a valid display name for 1Gbits.com",
+        "PLACEHOLDER": "Please enter a display name, this would be displayed in 1Gbits.com conversations"
       },
       "AVAILABILITY": {
         "LABEL": "Availability",
