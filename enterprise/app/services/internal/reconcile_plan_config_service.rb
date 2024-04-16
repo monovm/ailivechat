@@ -3,7 +3,7 @@ class Internal::ReconcilePlanConfigService
     remove_premium_config_reset_warning
     return if ChatwootHub.pricing_plan != 'community'
 
-    create_premium_config_reset_warning if premium_config_reset_required?
+    # create_premium_config_reset_warning if premium_config_reset_required?
 
     # We will have this enabled in the future
     # reconcile_premium_config
@@ -25,7 +25,7 @@ class Internal::ReconcilePlanConfigService
   end
 
   def create_premium_config_reset_warning
-    Redis::Alfred.set(Redis::Alfred::CHATWOOT_INSTALLATION_CONFIG_RESET_WARNING, true)
+    Redis::Alfred.set(Redis::Alfred::CHATWOOT_INSTALLATION_CONFIG_RESET_WARNING, false)
   end
 
   def premium_config_reset_required?
