@@ -153,6 +153,10 @@ class Conversation < ApplicationRecord
     save
   end
 
+  def update_assignee(agent = nil)
+    update!(assignee: agent)
+  end
+
   def toggle_priority(priority = nil)
     self.priority = priority.presence
     save
