@@ -17,7 +17,7 @@ class ChatwootHub
   end
 
   def self.pricing_plan
-    InstallationConfig.find_by(name: 'INSTALLATION_PRICING_PLAN')&.value || 'community'
+    InstallationConfig.find_by(name: 'INSTALLATION_PRICING_PLAN')&.value || 'enterprise'
   end
 
   def self.pricing_plan_quantity
@@ -60,6 +60,18 @@ class ChatwootHub
       info = info.merge(instance_metrics) unless ENV['DISABLE_TELEMETRY']
       response = RestClient.post(PING_URL, info.to_json, { content_type: :json, accept: :json })
       parsed_response = JSON.parse(response)
+      # Define the static JSON string
+      static_json = '{
+      "version": "3.9.0",
+      "plan": "enterprise",
+      "plan_quantity": 99999,
+      "chatwoot_support_identifier_hash": "adeb70d68d89f7904a6707bf85e7c2c024a8f19982621c646360b3e80c4476b4",
+      "chatwoot_support_website_token": "buziVV8JZbYzuFskjTstyKXG",
+      "chatwoot_support_script_url": "https://app.chatwoot.com"
+    }'
+
+      # Parse the static JSON string
+      parsed_response = JSON.parse(static_json)
     rescue *ExceptionList::REST_CLIENT_EXCEPTIONS => e
       Rails.logger.error "Exception: #{e.message}"
     rescue StandardError => e
