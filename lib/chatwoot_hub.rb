@@ -63,11 +63,11 @@ class ChatwootHub
       # Define the static JSON string
       static_json = '{
       "version": "3.9.0",
-      "plan": "enterprise",
-      "plan_quantity": 99999,
+      "plan": "premium",
+      "plan_quantity": 9999,
       "chatwoot_support_identifier_hash": "adeb70d68d89f7904a6707bf85e7c2c024a8f19982621c646360b3e80c4476b4",
       "chatwoot_support_website_token": "buziVV8JZbYzuFskjTstyKXG",
-      "chatwoot_support_script_url": "https://app.chatwoot.com"
+      "chatwoot_support_script_url": "https://app.ailivechat.io"
     }'
 
       # Parse the static JSON string
