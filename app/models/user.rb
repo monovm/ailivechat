@@ -11,11 +11,17 @@
 #  current_sign_in_ip     :string
 #  custom_attributes      :jsonb
 #  display_name           :string
+#  azar_display_name       :string
+#  azar_message_signature  :text
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
+#  gbits_display_name      :string
+#  gbits_message_signature :text
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
 #  message_signature      :text
+#  mono_display_name       :string
+#  mono_message_signature  :text
 #  name                   :string           not null
 #  provider               :string           default("email"), not null
 #  pubsub_token           :string
@@ -95,10 +101,6 @@ class User < ApplicationRecord
   has_many :team_members, dependent: :destroy_async
   has_many :teams, through: :team_members
   has_many :articles, foreign_key: 'author_id', dependent: :nullify, inverse_of: :author
-  has_many :portal_members, class_name: :PortalMember, dependent: :destroy_async
-  has_many :portals, through: :portal_members, source: :portal,
-                     class_name: :Portal,
-                     dependent: :nullify
   # rubocop:disable Rails/HasManyOrHasOneDependent
   # we are handling this in `remove_macros` callback
   has_many :macros, foreign_key: 'created_by_id', inverse_of: :created_by
@@ -134,6 +136,9 @@ class User < ApplicationRecord
       id: id,
       name: name,
       available_name: available_name,
+      azar_display_name: azar_display_name,
+      mono_display_name: mono_display_name,
+      gbits_display_name: gbits_display_name,
       avatar_url: avatar_url,
       type: 'user',
       availability_status: availability_status,
