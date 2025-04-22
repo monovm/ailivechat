@@ -25,6 +25,11 @@ export default {
     },
   },
   emits: ['startConversation'],
+  data() {
+    return {
+      modifiedAgents: [],
+    };
+  },
 
   computed: {
     ...mapGetters({
@@ -34,11 +39,28 @@ export default {
       return getContrastingTextColor(this.widgetColor);
     },
     agentAvatars() {
-      return this.availableAgents.map(agent => ({
-        name: agent.name,
-        avatar: agent.avatar_url,
-        id: agent.id,
-      }));
+      // eslint-disable-next-line func-names
+      return this.availableAgents.map(function (agent) {
+        let modifiedAvatar = agent.avatar_url;
+        let modifiedName = agent.name;
+        if (window.chatwootWebChannel.websiteName.toLowerCase() == 'azaronline') {
+          modifiedAvatar = agent.azar_avatar_url;
+          modifiedName = agent.azar_display_name;
+        }
+        if (window.chatwootWebChannel.websiteName.toLowerCase() == 'monovm') {
+          modifiedAvatar = agent.mono_avatar_url;
+          modifiedName = agent.mono_display_name;
+        }
+        if (window.chatwootWebChannel.websiteName.toLowerCase() == '1gbits') {
+          modifiedAvatar = agent.gbits_avatar_url;
+          modifiedName = agent.gbits_display_name;
+        }
+        return {
+          name: modifiedName,
+          avatar: modifiedAvatar,
+          id: agent.id,
+        };
+      });
     },
     isOnline() {
       const { workingHoursEnabled } = this.channelConfig;
@@ -49,6 +71,9 @@ export default {
       }
       return anyAgentOnline;
     },
+  },
+  mounted() {
+    this.modifiedAgents = this.agentAvatars;
   },
   methods: {
     startConversation() {
@@ -82,7 +107,7 @@ export default {
           {{ replyWaitMessage }}
         </div>
       </div>
-      <GroupedAvatars v-if="isOnline" :users="availableAgents" />
+      <GroupedAvatars v-if="isOnline" :users="modifiedAgents" />
     </div>
     <button
       class="inline-flex items-center gap-1 font-medium text-n-slate-12"

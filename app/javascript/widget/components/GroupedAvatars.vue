@@ -27,7 +27,7 @@ const usersToDisplay = computed(() => props.users.slice(0, props.limit));
       <Thumbnail
         size="36px"
         :username="user.name"
-        :src="user.avatar_url"
+        :src="user.avatar"
         has-border
       />
     </span>
