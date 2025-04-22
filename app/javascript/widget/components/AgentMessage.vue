@@ -69,17 +69,17 @@ export default {
     },
     agentName() {
       if (this.message.sender) {
-        if (window.chatwootWebChannel.websiteName === 'AzarOnline') {
+        if (window.chatwootWebChannel.websiteName.toLowerCase() == 'azaronline') {
           return (
             this.message.sender.azar_display_name || this.message.sender.name
           );
         }
-        if (window.chatwootWebChannel.websiteName === 'MonoVM') {
+        if (window.chatwootWebChannel.websiteName.toLowerCase() == 'monovm') {
           return (
             this.message.sender.mono_display_name || this.message.sender.name
           );
         }
-        if (window.chatwootWebChannel.websiteName === '1Gbits') {
+        if (window.chatwootWebChannel.websiteName.toLowerCase() == '1gbits') {
           return (
             this.message.sender.gbits_display_name || this.message.sender.name
           );
@@ -102,21 +102,21 @@ export default {
         return displayImage;
       }
 
-      if (window.chatwootWebChannel.websiteName === 'AzarOnline') {
+      if (window.chatwootWebChannel.websiteName.toLowerCase() == 'azaronline') {
         return (
           this.message.sender.azar_avatar_url ||
           this.message.sender.displayImage
         );
       }
 
-      if (window.chatwootWebChannel.websiteName === 'MonoVM') {
+      if (window.chatwootWebChannel.websiteName.toLowerCase() == 'monovm') {
         return (
           this.message.sender.mono_avatar_url ||
           this.message.sender.displayImage
         );
       }
 
-      if (window.chatwootWebChannel.websiteName === '1Gbits') {
+      if (window.chatwootWebChannel.websiteName.toLowerCase() == '1gbits') {
         return (
           this.message.sender.gbits_avatar_url ||
           this.message.sender.displayImage
