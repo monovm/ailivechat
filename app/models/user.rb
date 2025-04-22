@@ -140,6 +140,9 @@ class User < ApplicationRecord
       mono_display_name: mono_display_name,
       gbits_display_name: gbits_display_name,
       avatar_url: avatar_url,
+      azar_avatar_url: azar_avatar_url,
+      mono_avatar_url: mono_avatar_url,
+      gbits_avatar_url: gbits_avatar_url,
       type: 'user',
       availability_status: availability_status,
       thumbnail: avatar_url
