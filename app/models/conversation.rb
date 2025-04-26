@@ -129,6 +129,10 @@ class Conversation < ApplicationRecord
     additional_attributes&.dig('conversation_language')
   end
 
+  def update_assignee(agent = nil)
+    update!(assignee: agent)
+  end
+
   def last_activity_at
     self[:last_activity_at] || created_at
   end
