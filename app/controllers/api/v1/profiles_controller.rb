@@ -68,7 +68,7 @@ class Api::V1::ProfilesController < Api::BaseController
   end
 
   def profile_params
-    params.require(:profile).permit(
+    permitted_params = params.require(:profile).permit(
       :email,
       :name,
       :display_name,
@@ -86,6 +86,14 @@ class Api::V1::ProfilesController < Api::BaseController
       :account_id,
       ui_settings: {}
     )
+    
+    # Filter out empty avatar strings to prevent ActiveStorage MessageVerifier errors
+    avatar_fields = %w[avatar azar_avatar mono_avatar gbits_avatar]
+    avatar_fields.each do |field|
+      permitted_params.delete(field) if permitted_params[field].blank?
+    end
+    
+    permitted_params
   end
 
   def custom_attributes_params

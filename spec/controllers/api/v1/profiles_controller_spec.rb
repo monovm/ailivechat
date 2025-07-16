@@ -128,6 +128,27 @@ RSpec.describe 'Profile API', type: :request do
         expect(agent.avatar.attached?).to be(true)
       end
 
+      it 'handles empty avatar strings without error' do
+        put '/api/v1/profile',
+            params: { 
+              profile: { 
+                name: 'Test User',
+                azar_avatar: '',
+                mono_avatar: '',
+                gbits_avatar: '',
+                avatar: ''
+              } 
+            },
+            headers: agent.create_new_auth_token,
+            as: :json
+
+        expect(response).to have_http_status(:success)
+        json_response = response.parsed_body
+        expect(json_response['name']).to eq('Test User')
+        agent.reload
+        expect(agent.name).to eq('Test User')
+      end
+
       it 'updates the ui settings' do
         put '/api/v1/profile',
             params: { profile: { ui_settings: { is_contact_sidebar_open: false } } },
